@@ -1,6 +1,6 @@
 package com.marcoscarvalho.promocuritiba.model;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,11 +33,11 @@ public class Evento {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataInclusao = Calendar.getInstance();
+	private Date dataInclusao;
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataAlteracao;
+	private Date dataAlteracao;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
@@ -50,6 +50,10 @@ public class Evento {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
 	private Set<EventoInfo> informacoes = new HashSet<EventoInfo>();
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "id_evento")
+	private Set<EventoImagem> imagens = new HashSet<EventoImagem>();
 
 	@Column
 	private String local;
@@ -76,19 +80,19 @@ public class Evento {
 		this.nome = nome;
 	}
 
-	public Calendar getDataInclusao() {
+	public Date getDataInclusao() {
 		return dataInclusao;
 	}
 
-	public void setDataInclusao(Calendar dataInclusao) {
+	public void setDataInclusao(Date dataInclusao) {
 		this.dataInclusao = dataInclusao;
 	}
 
-	public Calendar getDataAlteracao() {
+	public Date getDataAlteracao() {
 		return dataAlteracao;
 	}
 
-	public void setDataAlteracao(Calendar dataAlteracao) {
+	public void setDataAlteracao(Date dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
 	}
 
@@ -128,6 +132,7 @@ public class Evento {
 	public String toString() {
 		return "Evento [id=" + id + ", nome=" + nome + ", corpoPrincipal=" + corpoPrincipal + ", dataInclusao="
 				+ dataInclusao + ", dataAlteracao=" + dataAlteracao + ", datas=" + datas + ", valores=" + valores
+				+ ", imagens=" + imagens
 				+ ", informacoes=" + informacoes + ", local=" + local + ", endereco=" + endereco + ", origemInformacao="
 				+ origemInformacao + "]";
 	}
@@ -154,6 +159,14 @@ public class Evento {
 
 	public void setInformacoes(Set<EventoInfo> informacoes) {
 		this.informacoes = informacoes;
+	}
+
+	public Set<EventoImagem> getImagens() {
+		return imagens;
+	}
+
+	public void setImagens(Set<EventoImagem> imagens) {
+		this.imagens = imagens;
 	}
 
 }

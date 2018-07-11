@@ -4,4 +4,38 @@
   <h1 class="text-uppercase mb-0">Start Bootstrap</h1>
   <hr class="star-light">
   <h2 class="font-weight-light mb-0">Web Developer - Graphic Artist - User Experience Designer</h2>
+  
+    <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Data Table Example</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>local</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Nome</th>
+                  <th>local</th>
+                </tr>
+              </tfoot>
+              <tbody>
+	              <#list model["eventos"] as evento>
+				  	<tr>
+				  		<td><#if event.nome??>${event.nome}<#else> - </#if></td>
+				  		<td><#if event.local??>${event.local}<#else> - </#if></td>
+				  	</tr>
+			    </#list>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+    
 </@u.page>

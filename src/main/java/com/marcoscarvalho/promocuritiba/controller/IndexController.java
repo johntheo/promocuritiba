@@ -21,6 +21,7 @@ public class IndexController {
 	@GetMapping("/")
 	public String index(@ModelAttribute("model") ModelMap model) {
 		logger.info("index >> /");
+		model.addAttribute("ultimaAtualizacaoEventos", eventoService.consultarUltimaAtualizacaoEventos());
 		model.addAttribute("eventos", eventoService.consultarProximosEventos());
 		return "index";
 	}
@@ -28,7 +29,9 @@ public class IndexController {
 	@GetMapping("/index.html")
 	public String indexHtml(@ModelAttribute("model") ModelMap model) {
 		logger.info("index >> /index.html");
+		model.addAttribute("ultimaAtualizacaoEventos", eventoService.consultarUltimaAtualizacaoEventos());
 		model.addAttribute("eventos", eventoService.consultarProximosEventos());
 		return "index";
 	}
+
 }

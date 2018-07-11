@@ -14,8 +14,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "evento_data")
-public class EventoData {
+@Table(name = "evento_info")
+public class EventoImagem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,19 +24,17 @@ public class EventoData {
 	@ManyToOne
 	@JoinColumn(name = "id_evento")
 	private Evento evento;
-	
+
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInicio;
-	
+	private String nome;
+
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataFim;
-	
+	private String valor;
+
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInclusao;
-	
+
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAlteracao;
@@ -49,20 +47,20 @@ public class EventoData {
 		this.id = id;
 	}
 
-	public Date getDataInicio() {
-		return dataInicio;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Date getDataFim() {
-		return dataFim;
+	public String getValor() {
+		return valor;
 	}
 
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 	public Date getDataInclusao() {
@@ -83,7 +81,7 @@ public class EventoData {
 
 	@Override
 	public String toString() {
-		return "DataEvento [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + "]";
+		return "EventoImagem [id=" + id + ", nome=" + nome + ", valor=" + valor + "]";
 	}
 
 	public Evento getEvento() {
@@ -93,4 +91,5 @@ public class EventoData {
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
+
 }

@@ -1,7 +1,7 @@
 package com.marcoscarvalho.promocuritiba.model;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,11 +34,11 @@ public class EventoValores {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataInclusao = Calendar.getInstance();
+	private Date dataInclusao;
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataAlteracao;
+	private Date dataAlteracao;
 
 	public long getId() {
 		return id;
@@ -64,19 +64,19 @@ public class EventoValores {
 		this.nome = nome;
 	}
 
-	public Calendar getDataInclusao() {
+	public Date getDataInclusao() {
 		return dataInclusao;
 	}
 
-	public void setDataInclusao(Calendar dataInclusao) {
+	public void setDataInclusao(Date dataInclusao) {
 		this.dataInclusao = dataInclusao;
 	}
 
-	public Calendar getDataAlteracao() {
+	public Date getDataAlteracao() {
 		return dataAlteracao;
 	}
 
-	public void setDataAlteracao(Calendar dataAlteracao) {
+	public void setDataAlteracao(Date dataAlteracao) {
 		this.dataAlteracao = dataAlteracao;
 	}
 
