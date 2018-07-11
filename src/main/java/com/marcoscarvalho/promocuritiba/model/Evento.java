@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,9 +21,19 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "evento")
 public class Evento {
-
+	
+	public static final String SEQ = "seq_evento";
+	public static final String SEQ_CATEGORIA = "seq_evento_categoria";
+	public static final String SEQ_DATA = "seq_evento_data";
+	public static final String SEQ_IMAGEM = "seq_evento_imagem";
+	public static final String SEQ_INFO = "seq_evento_info";
+	public static final String SEQ_TAGS = "seq_evento_tags";
+	public static final String SEQ_VALORES = "seq_evento_valores";
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
+	@SequenceGenerator(name = Evento.SEQ, sequenceName = Evento.SEQ, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ)
 	private long id;
 
 	@Column
