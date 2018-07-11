@@ -2,7 +2,7 @@
 
 # Termos
 Temos a intenção de divulgar eventos de qualquer espécie na cidade de Curitiba.
-Buscamos informações em dezenas de sites e postamos aqui, e gostaríamos de ser um lugar único de buscas.
+Buscamos informações em dezenas de sites e postamos aqui, para ser um lugar único de suas buscas.
 O problema atual é que os sites que fazem esse tipo de serviço, normalmente cobram dos organizadores para colocar eventos em seu site. Aqui não temos custos para os organizadores e você sentirá um meio mais justo de buscar sua programação para o final de semana.
 Caso você queira divulgar algo, mande nos um e-mail através da página Contato.
 Caso não concorde nas publicações, entre em contato.
