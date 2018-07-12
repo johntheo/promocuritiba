@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "evento")
 public class Evento {
-	
+
 	public static final String SEQ = "seq_evento";
 	public static final String SEQ_CATEGORIA = "seq_evento_categoria";
 	public static final String SEQ_DATA = "seq_evento_data";
@@ -29,7 +31,7 @@ public class Evento {
 	public static final String SEQ_INFO = "seq_evento_info";
 	public static final String SEQ_TAGS = "seq_evento_tags";
 	public static final String SEQ_VALORES = "seq_evento_valores";
-	
+
 	@Id
 	@Column
 	@SequenceGenerator(name = Evento.SEQ, sequenceName = Evento.SEQ, allocationSize = 1)
@@ -61,10 +63,20 @@ public class Evento {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
 	private Set<EventoInfo> informacoes = new HashSet<EventoInfo>();
-	
+
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
 	private Set<EventoImagem> imagens = new HashSet<EventoImagem>();
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "evento_tag", joinColumns = { @JoinColumn(name = "id_evento") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_tag") })
+	private Set<EventoTags> tags = new HashSet<EventoTags>();
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinTable(name = "evento_categoria", joinColumns = { @JoinColumn(name = "id_evento") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_categoria") })
+	private Set<EventoCategoria> categorias = new HashSet<EventoCategoria>();
 
 	@Column
 	private String local;
@@ -143,9 +155,8 @@ public class Evento {
 	public String toString() {
 		return "Evento [id=" + id + ", nome=" + nome + ", corpoPrincipal=" + corpoPrincipal + ", dataInclusao="
 				+ dataInclusao + ", dataAlteracao=" + dataAlteracao + ", datas=" + datas + ", valores=" + valores
-				+ ", imagens=" + imagens
-				+ ", informacoes=" + informacoes + ", local=" + local + ", endereco=" + endereco + ", origemInformacao="
-				+ origemInformacao + "]";
+				+ ", imagens=" + imagens + ", informacoes=" + informacoes + ", local=" + local + ", endereco="
+				+ endereco + ", origemInformacao=" + origemInformacao + "]";
 	}
 
 	public Set<EventoData> getDatas() {

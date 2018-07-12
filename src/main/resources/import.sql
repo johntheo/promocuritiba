@@ -2,6 +2,7 @@
 
 insert into evento (id,corpo_principal, data_alteracao, data_inclusao, endereco, local, nome, origem_informacao) values (nextval('seq_evento'), 'O Churras na casa do Marcão é considerado o melhor churrasco da história de Curitiba', now(), now(), 'Rua Carambolas, 196', 'Casa do Marcão', 'Churras 1', 'PromoCuritiba');
 
+insert into evento_data (id, data_inclusao, data_alteracao, data_inicio, data_fim, id_evento) values (nextval('seq_evento_data'), now(), now(), now()::date + interval '11 hours', now()::date + interval '12 hours', (select id from evento where nome = 'Churras 1'));
 insert into evento_data (id, data_inclusao, data_alteracao, data_inicio, data_fim, id_evento) values (nextval('seq_evento_data'), now(), now(), now()::date + interval '15 hours', now()::date + interval '16 hours', (select id from evento where nome = 'Churras 1'));
 insert into evento_data (id, data_inclusao, data_alteracao, data_inicio, data_fim, id_evento) values (nextval('seq_evento_data'), now(), now(), now()::date + interval '15 hours' + interval '1 day', now()::date + interval '16 hours' + interval '1 day', (select id from evento where nome = 'Churras 1'));
 insert into evento_data (id, data_inclusao, data_alteracao, data_inicio, data_fim, id_evento) values (nextval('seq_evento_data'), now(), now(), now()::date + interval '15 hours' + interval '2 days', now()::date + interval '16 hours' + interval '2 days', (select id from evento where nome = 'Churras 1'));

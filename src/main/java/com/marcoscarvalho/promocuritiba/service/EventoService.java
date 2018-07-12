@@ -2,6 +2,7 @@ package com.marcoscarvalho.promocuritiba.service;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -21,16 +22,26 @@ public class EventoService {
 
 	@Autowired
 	private EventoRepositorio eventoRepositorio;
-	
+
 	@Autowired
 	private EventoDataRepositorio eventoDataRepositorio;
 
 	public List<EventoData> consultarProximosEventos() {
 		List<EventoData> list = eventoDataRepositorio.findNextEvents();
-		logger.info("consultarProximosEventos >> proximos >> " + list.size());
-		return list;
+		List<EventoData> listRetorno = new LinkedList<EventoData>();
+
+		for (EventoData eventoData : list) {
+			if (new Date().before(eventoData.getDataInicio())) {
+				listRetorno.add(eventoData);
+			}
+		}
+
+		logger.info(
+				"consultarProximosEventos >> proximos >> " + list.size() + ", listRetorno >> " + listRetorno.size());
+
+		return listRetorno;
 	}
-	
+
 	public Date consultarUltimaAtualizacaoEventos() {
 		return eventoRepositorio.findLastUpdate();
 	}
