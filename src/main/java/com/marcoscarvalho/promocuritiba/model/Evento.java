@@ -1,7 +1,9 @@
 package com.marcoscarvalho.promocuritiba.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -20,8 +22,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.marcoscarvalho.promocuritiba.service.Constantes;
+
 @Entity
-@Table(name = "evento")
+@Table(name = "eventos")
 public class Evento {
 
 	public static final String SEQ = "seq_evento";
@@ -42,6 +46,9 @@ public class Evento {
 	private String nome;
 
 	@Column
+	private String link;
+
+	@Column
 	private String corpoPrincipal;
 
 	@Column(nullable = false, insertable = true, updatable = false)
@@ -54,29 +61,29 @@ public class Evento {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
-	private Set<EventoData> datas = new HashSet<EventoData>();
+	private Set<Data> datas = new HashSet<Data>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
-	private Set<EventoValores> valores = new HashSet<EventoValores>();
+	private Set<Valor> valores = new HashSet<Valor>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
-	private Set<EventoInfo> informacoes = new HashSet<EventoInfo>();
+	private Set<Informacao> informacoes = new HashSet<Informacao>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
-	private Set<EventoImagem> imagens = new HashSet<EventoImagem>();
+	private Set<Imagem> imagens = new HashSet<Imagem>();
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "evento_tag", joinColumns = { @JoinColumn(name = "id_evento") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_tag") })
-	private Set<EventoTags> tags = new HashSet<EventoTags>();
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Set<Tag> tags = new HashSet<Tag>();
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "evento_categoria", joinColumns = { @JoinColumn(name = "id_evento") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_categoria") })
-	private Set<EventoCategoria> categorias = new HashSet<EventoCategoria>();
+	private Set<Categoria> categorias = new HashSet<Categoria>();
 
 	@Column
 	private String local;
@@ -151,44 +158,102 @@ public class Evento {
 		this.corpoPrincipal = corpoPrincipal;
 	}
 
-	@Override
-	public String toString() {
-		return "Evento [id=" + id + ", nome=" + nome + ", corpoPrincipal=" + corpoPrincipal + ", dataInclusao="
-				+ dataInclusao + ", dataAlteracao=" + dataAlteracao + ", datas=" + datas + ", valores=" + valores
-				+ ", imagens=" + imagens + ", informacoes=" + informacoes + ", local=" + local + ", endereco="
-				+ endereco + ", origemInformacao=" + origemInformacao + "]";
-	}
-
-	public Set<EventoData> getDatas() {
+	public Set<Data> getDatas() {
 		return datas;
 	}
 
-	public void setDatas(Set<EventoData> datas) {
+	public void setDatas(Set<Data> datas) {
 		this.datas = datas;
 	}
 
-	public Set<EventoValores> getValores() {
+	public Set<Valor> getValores() {
 		return valores;
 	}
 
-	public void setValores(Set<EventoValores> valores) {
+	public void setValores(Set<Valor> valores) {
 		this.valores = valores;
 	}
 
-	public Set<EventoInfo> getInformacoes() {
+	public Set<Informacao> getInformacoes() {
 		return informacoes;
 	}
 
-	public void setInformacoes(Set<EventoInfo> informacoes) {
+	public void setInformacoes(Set<Informacao> informacoes) {
 		this.informacoes = informacoes;
 	}
 
-	public Set<EventoImagem> getImagens() {
+	public Set<Imagem> getImagens() {
 		return imagens;
 	}
 
-	public void setImagens(Set<EventoImagem> imagens) {
+	public void setImagens(Set<Imagem> imagens) {
 		this.imagens = imagens;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public Set<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Set<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", nome=" + nome + ", link=" + link + ", corpoPrincipal=" + corpoPrincipal
+				+ ", dataInclusao=" + dataInclusao + ", dataAlteracao=" + dataAlteracao + ", datas=" + datas
+				+ ", valores=" + valores + ", informacoes=" + informacoes + ", imagens=" + imagens + ", tags=" + tags
+				+ ", categorias=" + categorias + ", local=" + local + ", endereco=" + endereco + ", origemInformacao="
+				+ origemInformacao + "]";
+	}
+
+	public String getTagStr() {
+		return retorarString(tags, Constantes.VIRGULA);
+	}
+
+	public String getCategoriaStr() {
+		return retorarString(categorias, Constantes.VIRGULA);
+	}
+
+	public String getValorStr() {
+		return retorarString(valores, Constantes.NOVA_LINHA);
+	}
+
+	public String getDataStr() {
+		return retorarString(datas, Constantes.NOVA_LINHA);
+	}
+
+	public String getInformacaoStr() {
+		return retorarString(informacoes, Constantes.NOVA_LINHA);
+	}
+
+	private <T> String retorarString(Set<T> set, String formato) {
+		String str = "";
+		List<T> list = new ArrayList<T>();
+		list.addAll(set);
+		for (int i = 0; i < list.size(); i++) {
+			str += list.get(i).toString();
+			if (list.size() != (i + 1)) {
+				str += formato;
+			}
+		}
+		return str;
 	}
 
 }

@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.marcoscarvalho.promocuritiba.model.EventoData;
+import com.marcoscarvalho.promocuritiba.model.Data;
 
 @Repository
-public interface EventoDataRepositorio extends CrudRepository<EventoData, Long> {
+public interface EventoDataRepositorio extends CrudRepository<Data, Long> {
 
 	@Cacheable("proximosEventos")
-	@Query(value = "SELECT * FROM EVENTO_DATA D WHERE d.data_inicio >= now() order by d.data_inicio", nativeQuery = true)
-	public List<EventoData> findNextEvents();
+	@Query(value = "SELECT * FROM datas D WHERE d.data_inicio >= now() order by d.data_inicio", nativeQuery = true)
+	public List<Data> findNextEvents();
 }

@@ -1,5 +1,6 @@
 package com.marcoscarvalho.promocuritiba.model;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,24 +16,24 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "evento_info")
-public class EventoInfo {
+@Table(name = "valores")
+public class Valor {
 
 	@Id
 	@Column
-	@SequenceGenerator(name = Evento.SEQ_INFO, sequenceName = Evento.SEQ_INFO, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_INFO)
+	@SequenceGenerator(name = Evento.SEQ_VALORES, sequenceName = Evento.SEQ_VALORES, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_VALORES)
 	private long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_evento")
 	private Evento evento;
 
 	@Column
-	private String nome;
+	private BigDecimal valor;
 
 	@Column
-	private String valor;
+	private String nome;
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -50,20 +51,20 @@ public class EventoInfo {
 		this.id = id;
 	}
 
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getValor() {
-		return valor;
-	}
-
-	public void setValor(String valor) {
-		this.valor = valor;
 	}
 
 	public Date getDataInclusao() {
@@ -82,17 +83,17 @@ public class EventoInfo {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	@Override
-	public String toString() {
-		return "EventoInfo [id=" + id + ", nome=" + nome + ", valor=" + valor + "]";
-	}
-
 	public Evento getEvento() {
 		return evento;
 	}
 
 	public void setEvento(Evento evento) {
 		this.evento = evento;
+	}
+
+	@Override
+	public String toString() {
+		return nome + ": " + valor;
 	}
 
 }

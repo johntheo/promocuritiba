@@ -1,6 +1,5 @@
 package com.marcoscarvalho.promocuritiba.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,14 +14,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.marcoscarvalho.promocuritiba.service.Constantes;
+
 @Entity
-@Table(name = "evento_valores")
-public class EventoValores {
+@Table(name = "datas")
+public class Data {
 
 	@Id
 	@Column
-	@SequenceGenerator(name = Evento.SEQ_VALORES, sequenceName = Evento.SEQ_VALORES, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_VALORES)
+	@SequenceGenerator(name = Evento.SEQ_DATA, sequenceName = Evento.SEQ_DATA, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_DATA)
 	private long id;
 
 	@ManyToOne
@@ -30,10 +31,12 @@ public class EventoValores {
 	private Evento evento;
 
 	@Column
-	private BigDecimal valor;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInicio;
 
 	@Column
-	private String nome;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFim;
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,20 +54,20 @@ public class EventoValores {
 		this.id = id;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public Date getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
-	public String getNome() {
-		return nome;
+	public Date getDataFim() {
+		return dataFim;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
 	}
 
 	public Date getDataInclusao() {
@@ -83,11 +86,6 @@ public class EventoValores {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	@Override
-	public String toString() {
-		return "EventoValores [id=" + id + ", valor=" + valor + ", nome=" + nome + "]";
-	}
-
 	public Evento getEvento() {
 		return evento;
 	}
@@ -96,4 +94,8 @@ public class EventoValores {
 		this.evento = evento;
 	}
 
+	@Override
+	public String toString() {
+		return Constantes.formartarData(dataInicio) + " - " + Constantes.formartarData(dataFim);
+	}
 }

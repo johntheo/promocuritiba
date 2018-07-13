@@ -15,13 +15,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "evento_info")
-public class EventoImagem {
+@Table(name = "informacoes")
+public class Informacao {
 
 	@Id
 	@Column
-	@SequenceGenerator(name = Evento.SEQ_IMAGEM, sequenceName = Evento.SEQ_IMAGEM, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_IMAGEM)
+	@SequenceGenerator(name = Evento.SEQ_INFO, sequenceName = Evento.SEQ_INFO, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_INFO)
 	private long id;
 	
 	@ManyToOne
@@ -82,17 +82,17 @@ public class EventoImagem {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	@Override
-	public String toString() {
-		return "EventoImagem [id=" + id + ", nome=" + nome + ", valor=" + valor + "]";
-	}
-
 	public Evento getEvento() {
 		return evento;
 	}
 
 	public void setEvento(Evento evento) {
 		this.evento = evento;
+	}
+
+	@Override
+	public String toString() {
+		return nome + ": " + valor;
 	}
 
 }

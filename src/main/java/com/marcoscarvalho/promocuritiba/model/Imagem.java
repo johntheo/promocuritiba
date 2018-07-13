@@ -15,31 +15,29 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "evento_data")
-public class EventoData {
+@Table(name = "imagens")
+public class Imagem {
 
 	@Id
 	@Column
-	@SequenceGenerator(name = Evento.SEQ_DATA, sequenceName = Evento.SEQ_DATA, allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_DATA)
+	@SequenceGenerator(name = Evento.SEQ_IMAGEM, sequenceName = Evento.SEQ_IMAGEM, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_IMAGEM)
 	private long id;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_evento")
 	private Evento evento;
-	
+
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInicio;
-	
+	private String nome;
+
 	@Column
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataFim;
-	
+	private String valor;
+
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInclusao;
-	
+
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAlteracao;
@@ -52,20 +50,20 @@ public class EventoData {
 		this.id = id;
 	}
 
-	public Date getDataInicio() {
-		return dataInicio;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Date getDataFim() {
-		return dataFim;
+	public String getValor() {
+		return valor;
 	}
 
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 	public Date getDataInclusao() {
@@ -84,11 +82,6 @@ public class EventoData {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	@Override
-	public String toString() {
-		return "DataEvento [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim + "]";
-	}
-
 	public Evento getEvento() {
 		return evento;
 	}
@@ -96,4 +89,11 @@ public class EventoData {
 	public void setEvento(Evento evento) {
 		this.evento = evento;
 	}
+
+	@Override
+	public String toString() {
+		return "Imagem [id=" + id + ", evento=" + evento + ", nome=" + nome + ", valor=" + valor + ", dataInclusao="
+				+ dataInclusao + ", dataAlteracao=" + dataAlteracao + "]";
+	}
+
 }

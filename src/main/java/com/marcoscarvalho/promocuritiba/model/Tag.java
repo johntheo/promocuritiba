@@ -11,9 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,26 +19,22 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tags")
-public class EventoTags {
+public class Tag {
 
 	@Id
 	@Column
 	@SequenceGenerator(name = Evento.SEQ_TAGS, sequenceName = Evento.SEQ_TAGS, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_TAGS)
 	private long id;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_evento")
-	private Evento evento;
 
 	@Column
 	private String nome;
 
 	@Column
 	private String valor;
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "tags")
-    private Set<Evento> eventos = new HashSet<Evento>();
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
+	private Set<Evento> eventos = new HashSet<Evento>();
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -90,25 +84,17 @@ public class EventoTags {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	@Override
-	public String toString() {
-		return "EventoInfo [id=" + id + ", nome=" + nome + ", valor=" + valor + "]";
-	}
-
-	public Evento getEvento() {
-		return evento;
-	}
-
-	public void setEvento(Evento evento) {
-		this.evento = evento;
-	}
-
 	public Set<Evento> getEventos() {
 		return eventos;
 	}
 
 	public void setEventos(Set<Evento> eventos) {
 		this.eventos = eventos;
+	}
+
+	@Override
+	public String toString() {
+		return valor;
 	}
 
 }

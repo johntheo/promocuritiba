@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marcoscarvalho.promocuritiba.model.Evento;
-import com.marcoscarvalho.promocuritiba.model.EventoData;
+import com.marcoscarvalho.promocuritiba.model.Data;
 import com.marcoscarvalho.promocuritiba.repository.EventoDataRepositorio;
 import com.marcoscarvalho.promocuritiba.repository.EventoRepositorio;
 
@@ -26,11 +26,11 @@ public class EventoService {
 	@Autowired
 	private EventoDataRepositorio eventoDataRepositorio;
 
-	public List<EventoData> consultarProximosEventos() {
-		List<EventoData> list = eventoDataRepositorio.findNextEvents();
-		List<EventoData> listRetorno = new LinkedList<EventoData>();
+	public List<Data> consultarProximosEventos() {
+		List<Data> list = eventoDataRepositorio.findNextEvents();
+		List<Data> listRetorno = new LinkedList<Data>();
 
-		for (EventoData eventoData : list) {
+		for (Data eventoData : list) {
 			if (new Date().before(eventoData.getDataInicio())) {
 				listRetorno.add(eventoData);
 			}
@@ -40,6 +40,14 @@ public class EventoService {
 				"consultarProximosEventos >> proximos >> " + list.size() + ", listRetorno >> " + listRetorno.size());
 
 		return listRetorno;
+	}
+	
+	public List<Evento> consultarProximosObjetosEventos() {
+		List<Evento> list = eventoRepositorio.findNextEvents();
+		logger.info(
+				"consultarProximosObjetosEventos >> proximos >> " + list.size());
+		
+		return list;
 	}
 
 	public Date consultarUltimaAtualizacaoEventos() {

@@ -23,14 +23,17 @@ public class IndexController {
 		logger.info("index >> /");
 		model.addAttribute("ultimaAtualizacaoEventos", eventoService.consultarUltimaAtualizacaoEventos());
 		model.addAttribute("eventos", eventoService.consultarProximosEventos());
+		model.addAttribute("objetoEventos", eventoService.consultarProximosObjetosEventos());
 		return "index";
 	}
+
 
 	@GetMapping("/index.html")
 	public String indexHtml(@ModelAttribute("model") ModelMap model) {
 		logger.info("index >> /index.html");
 		model.addAttribute("ultimaAtualizacaoEventos", eventoService.consultarUltimaAtualizacaoEventos());
 		model.addAttribute("eventos", eventoService.consultarProximosEventos());
+		model.addAttribute("objetoEventos", eventoService.consultarProximosObjetosEventos());
 		return "index";
 	}
 
