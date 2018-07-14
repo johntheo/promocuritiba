@@ -13,6 +13,6 @@ import com.marcoscarvalho.promocuritiba.model.Data;
 public interface EventoDataRepositorio extends CrudRepository<Data, Long> {
 
 	@Cacheable("proximosEventos")
-	@Query(value = "SELECT * FROM datas D WHERE d.data_inicio >= now() order by d.data_inicio", nativeQuery = true)
+	@Query(value = "SELECT * FROM data D WHERE d.data_inicio >= now() order by d.data_inicio", nativeQuery = true)
 	public List<Data> findNextEvents();
 }

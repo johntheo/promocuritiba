@@ -18,10 +18,10 @@
 			  <tbody>
 			    <tr><td><b>Local:</b></td><td>${evento.local}</td></tr>
 			    <tr><td><b>Endereço:</b></td><td>${evento.endereco}</td></tr>
-			    <tr><td><b>Valores</b></td><td>
+			    <tr><td><b>Custos</b></td><td>
 			    	<table><tbody>
-			    	<#list evento.valores as v>
-			    	<tr><td>${v.nome}:</td><td>${v.valor}</td></tr>
+			    	<#list evento.custos as custo>
+			    	<tr><td>${custo.nome}:</td><td>${custo.valor}</td></tr>
 				    </#list>
 			    	</tbody></table>
 			    </td></tr>

@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 import com.marcoscarvalho.promocuritiba.service.Constantes;
 
 @Entity
-@Table(name = "datas")
+@Table(name = "data")
 public class Data {
 
 	@Id

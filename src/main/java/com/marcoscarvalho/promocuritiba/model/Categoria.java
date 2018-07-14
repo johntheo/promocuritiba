@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "categorias")
+@Table(name = "categoria")
 public class Categoria {
 
 	@Id

@@ -16,8 +16,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "valores")
-public class Valor {
+@Table(name = "custo")
+public class Custo {
 
 	@Id
 	@Column

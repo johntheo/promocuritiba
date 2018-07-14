@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
 import com.marcoscarvalho.promocuritiba.service.Constantes;
 
 @Entity
-@Table(name = "eventos")
+@Table(name = "evento")
 public class Evento {
 
 	public static final String SEQ = "seq_evento";
@@ -34,7 +34,7 @@ public class Evento {
 	public static final String SEQ_IMAGEM = "seq_evento_imagem";
 	public static final String SEQ_INFO = "seq_evento_info";
 	public static final String SEQ_TAGS = "seq_evento_tags";
-	public static final String SEQ_VALORES = "seq_evento_valores";
+	public static final String SEQ_VALORES = "seq_evento_custos";
 
 	@Id
 	@Column
@@ -65,7 +65,7 @@ public class Evento {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
-	private Set<Valor> valores = new HashSet<Valor>();
+	private Set<Custo> custos = new HashSet<Custo>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
@@ -166,14 +166,6 @@ public class Evento {
 		this.datas = datas;
 	}
 
-	public Set<Valor> getValores() {
-		return valores;
-	}
-
-	public void setValores(Set<Valor> valores) {
-		this.valores = valores;
-	}
-
 	public Set<Informacao> getInformacoes() {
 		return informacoes;
 	}
@@ -218,7 +210,7 @@ public class Evento {
 	public String toString() {
 		return "Evento [id=" + id + ", nome=" + nome + ", link=" + link + ", corpoPrincipal=" + corpoPrincipal
 				+ ", dataInclusao=" + dataInclusao + ", dataAlteracao=" + dataAlteracao + ", datas=" + datas
-				+ ", valores=" + valores + ", informacoes=" + informacoes + ", imagens=" + imagens + ", tags=" + tags
+				+ ", custos=" + custos + ", informacoes=" + informacoes + ", imagens=" + imagens + ", tags=" + tags
 				+ ", categorias=" + categorias + ", local=" + local + ", endereco=" + endereco + ", origemInformacao="
 				+ origemInformacao + "]";
 	}
@@ -231,8 +223,8 @@ public class Evento {
 		return retorarString(categorias, Constantes.VIRGULA);
 	}
 
-	public String getValorStr() {
-		return retorarString(valores, Constantes.NOVA_LINHA);
+	public String getCustoStr() {
+		return retorarString(custos, Constantes.NOVA_LINHA);
 	}
 
 	public String getDataStr() {
@@ -254,6 +246,14 @@ public class Evento {
 			}
 		}
 		return str;
+	}
+
+	public Set<Custo> getCustos() {
+		return custos;
+	}
+
+	public void setCustos(Set<Custo> custos) {
+		this.custos = custos;
 	}
 
 }
