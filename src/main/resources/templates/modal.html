@@ -13,37 +13,20 @@
             <img class="img-fluid mb-5" src="${img.valor}" alt="${img.nome}">
 	    </#list>
             <p class="mb-5">${evento.corpoPrincipal}</p>
-            
-            <table class="table table-bordered">
-			  <tbody>
-			    <tr><td><b>Local:</b></td><td>${evento.local}</td></tr>
-			    <tr><td><b>Endereço:</b></td><td>${evento.endereco}</td></tr>
-			    <tr><td><b>Custos</b></td><td>
-			    	<table><tbody>
-			    	<#list evento.custos as custo>
-			    	<tr><td>${custo.nome}:</td><td>${custo.valor}</td></tr>
-				    </#list>
-			    	</tbody></table>
-			    </td></tr>
-			    <tr><td><b>Datas</b></td><td>
-			    	<table><tbody>
-			    	<#list evento.datas as data>
-			    	<tr><td>${data.dataInicio?string["dd/MM - HH:mm"]} - ${data.dataFim?string["dd/MM - HH:mm"]}</td></tr>
-				    </#list>
-			    	</tbody></table>
-			    </td></tr>
-			    <tr><td><b>Informações</b></td><td>
-			    	<table><tbody>
-			    	<#list evento.informacoes as info>
-			    	<tr><td>${info.nome}:</td><td>${info.valor}</td></tr>
-				    </#list>
-			    	</tbody></table>
-			    </td></tr>
-			    <tr><td><b>Categoria:</b></td><td>${evento.categoriaStr}</td></tr>
-			    <tr><td><b>Tags:</b></td><td>${evento.tagStr}</td></tr>
-			    <tr><td><b>Origem:</b></td><td>${evento.origemInformacao}</td></tr>
-			  </tbody>
-            </table>
+            <p class="mb-5"><b>Local</b><br>${evento.local}</p>
+            <p class="mb-5"><b>Endereço</b><br>${evento.endereco}</p>
+            <p class="mb-5"><b>Custos</b><br><#list evento.custos as custo>
+		    		${custo.nome}: ${custo.valor}<br>
+			</#list></p>
+            <p class="mb-5"><b>Datas:</b><br><#list evento.datas as data>
+	    		${data.dataInicio?string["dd/MM - HH:mm"]} - ${data.dataFim?string["dd/MM - HH:mm"]}<br>
+		    </#list></p>
+            <p class="mb-5"><b>Informações</b><br><#list evento.informacoes as info>
+				${info.nome}: ${info.valor}<br>
+			</#list></p>
+            <p class="mb-5"><b>Categoria</b><br>${evento.categoriaStr}</p>
+            <p class="mb-5"><b>Tags</b><br>${evento.tagStr}</p>
+            <p class="mb-5"><b>Origem</b><br>${evento.origemInformacao}</p>
                 
             <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
               <i class="fa fa-close"></i>
