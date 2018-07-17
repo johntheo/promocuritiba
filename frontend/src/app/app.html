@@ -1,0 +1,86 @@
+<ion-menu [content]="content">
+  <ion-content>
+
+    <!--***********  Side menu for android ***********-->
+    <div id="menu-material" showWhen="android">
+      <ion-header class="menu-header">
+        <img class="user-avatar round" src={{displayPhoto}} />
+        <p class="name">{{displayName}}</p>
+        <p class="email">{{displayEmail}}</p>
+      </ion-header>
+      <!--***********  Menu for android  ***********-->
+      <div class="list-box">
+        <ion-list no-lines>
+          <div *ngFor="let p of pages">
+            <ion-item menuClose (click)="openPage(p)">
+              <ion-icon [name]="p.icon" color="gray" item-left></ion-icon>
+              {{p.title}}
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </div>
+
+
+
+
+
+    <!--***********  Header for ios ***********-->
+
+    <div id="menu-ios" showWhen="ios" class="sideMenu-header" color="gray">
+      <div class="menu-header">
+
+        <img class="user-avatar round" src={{displayPhoto}} />
+        <p class="name">{{displayName}}</p>
+        <p class="email">{{displayEmail}}</p>
+
+      </div>
+      <!--***********  menu ***********-->
+      <div class="list-box">
+        <ion-list no-lines>
+          <div *ngFor="let p of pages">
+            <ion-item menuClose (click)="openPage(p)">
+              <ion-icon [name]="p.icon" color="gray" item-left></ion-icon>
+              {{p.title}}
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+    </div>
+
+
+
+    <!--***********  Side menu for PWA ***********-->
+    <div id="menu-pwa" hideWhen="android,ios">
+      <div class="menu-header">
+
+        <img class="user-avatar round" src={{displayPhoto}} />
+        <p class="name">{{displayName}}</p>
+        <p class="email">{{displayEmail}}</p>
+
+      </div>
+
+      <div class="list-box">
+        <ion-list no-lines>
+          <div *ngFor="let p of pages">
+            <ion-item menuClose (click)="openPage(p)">
+              <ion-icon [name]="p.icon" color="gray" item-left></ion-icon>
+              {{p.title}}
+            </ion-item>
+          </div>
+        </ion-list>
+      </div>
+
+      <ion-footer>
+        <button ion-button color="dark" block outline menuClose position="bottom" width="90%" (click)="logout()">
+          Sair
+        </button>
+      </ion-footer>
+    </div>
+  </ion-content>
+
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,61 @@
+
+<ion-header no-border>
+  <ion-navbar transparent color="dark">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="dark"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div class="login-container">
+    <img class="logo" src="./assets/icons/PEEN-transp.png" />
+    <!--*********** Form ***********-->
+
+    <form [formGroup]="registerForm" (submit)="registerUser()" novalidate>
+
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input tappable formControlName="profileName" type="text" [class.invalid]="!registerForm.controls.profileName.valid && registerForm.controls.profileName.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input tappable formControlName="email" type="email" [class.invalid]="!registerForm.controls.email.valid && registerForm.controls.email.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Telefone</ion-label>
+        <ion-input tappable formControlName="phone"  type="tel" [class.invalid]="!registerForm.controls.phone.valid && registerForm.controls.phone.dirty"></ion-input>
+      </ion-item>
+
+
+
+
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input tappable formControlName="password" type="password" [class.invalid]="!registerForm.controls.password.valid && registerForm.controls.password.dirty"></ion-input>
+      </ion-item>
+
+
+      
+      <ion-item class="error-message">
+        <p *ngIf="!registerForm.controls.profileName.valid  &&
+                registerForm.controls.profileName.dirty">*Insira seu nome.</p>
+        <p *ngIf="!registerForm.controls.email.valid  &&
+                registerForm.controls.email.dirty">*Endereço de email inválido.</p>
+        <p *ngIf="!registerForm.controls.phone.valid  &&
+                registerForm.controls.phone.dirty">*Inisira seu telefone.</p>
+        <p *ngIf="!registerForm.controls.password.valid  &&
+        registerForm.controls.password.dirty">*A senha precisa ter mais de 6 caracteres.</p>
+      </ion-item>
+        <button ion-button full type="submit" class="btn-criar">
+            Criar conta
+        </button>
+    </form>
+  </div>
+</ion-content>
+<ion-footer color="primary">
+
+</ion-footer>
+

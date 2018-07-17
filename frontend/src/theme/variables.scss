@@ -1,0 +1,263 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #594A42,
+  secondary:  #c0c0c8,
+  danger:     #e44548,
+  warning:    #ffEE58,
+  light:      #FAD8BD,
+  light2:     #e6dbdd,
+  dark:       #09091a,
+  darkGray:   #161629,
+
+  color1:(
+    base:     #CA4814,
+    contrast: #FAD8BD,
+  ),
+
+  color2:(
+    base:     #EB5317,
+    contrast: #FAD8BD,
+  ),
+
+  color3:(
+    base:     #EB9325,
+    contrast: #FAD8BD,
+  ),
+
+  color4:(
+    base:     #CA4814,
+    contrast: #FAD8BD,
+  ),
+
+  color5:(
+    base:     #594A42,
+    contrast: #FAD8BD,
+  ),
+
+ text-primary:(
+   base: #f3ffff,
+   contrast: #17252a
+ ),
+ 
+ text-secondary:(
+   base: #f3ffff,
+   contrast: #1fbad6
+ ),
+
+  special-blue:(
+    base: #0059B2,
+    contrast: #f3ffff
+  ),
+  twitter:(
+    base: #55acee,
+    contrast: #f3ffff
+  ),
+  facebook:(
+    base: #3b5998,
+    contrast: #f3ffff
+  ),
+  google:(
+    base: #de3f3b,
+    contrast: #f3ffff
+  ),
+  white:(
+    base: #f3ffff,
+    contrast: #17252a
+  ),
+  ios:(
+    base: #f3ffff,
+    contrast: #84BF41
+  ),
+  red:(
+    base: #f44336,
+    contrast: #f3ffff
+  ),
+  pink:(
+    base: #EA1E63,
+    contrast: #f3ffff
+  ),
+  purple:(
+    base: #9c27b0,
+    contrast: #f3ffff
+  ),
+    deeppurple:(
+    base: #673ab7,
+    contrast: #f3ffff
+  ),
+    indigo:(
+    base: #3f51b5,
+    contrast: #f3ffff
+  ),
+    blue :(
+    base: #2196f3,
+    contrast: #f3ffff
+  ),
+    blue2:(
+      base: #0034a7,
+      contrast: #f3ffff
+    ),
+    lightblue:(
+    base: #03a9f4,
+    contrast: #f3ffff
+  ),
+    cyan:(
+    base: #00bcd4,
+    contrast: #f3ffff
+  ),
+    teal:(
+    base: #009688,
+    contrast: #f3ffff
+  ),
+    green:(
+    base: #4caf50,
+    contrast: #f3ffff
+  ),
+    lightgreen:(
+    base: #8dc34b,
+    contrast: #f3ffff
+  ),
+      lime:(
+    base: #cddc39,
+    contrast: #333
+  ),
+      yellow:(
+    base: #ffeb3b,
+    contrast: #333
+  ),
+      amber:(
+    base: #ffc107,
+    contrast: #fff
+  ),
+      orange:(
+    base: #ff9800,
+    contrast: #f3ffff
+  ),
+      deeporange:(
+    base: #ff5722,
+    contrast: #f3ffff
+  ),
+      brown:(
+    base: #795548,
+    contrast: #f3ffff
+  ),
+      gray:(
+    base: #9e9e9e,
+    contrast: #f3ffff
+  ),
+      bluegray:(
+    base: #607d8b,
+    contrast: #f3ffff
+  ),
+      black:(
+    base: #000000,
+    contrast: #f3ffff
+  ),
+      ios-gray:(
+    base: #8e8e93,
+    contrast: #f3ffff
+  ),
+      ios-lightblue:(
+    base: #5ac8fa,
+    contrast: #f3ffff
+  ),
+      ios-blue :(
+    base: #007aff,
+    contrast: #f3ffff
+  ),
+      ios-yellow:(
+    base: #ffcc00,
+    contrast: #f3ffff
+  ),
+      ios-orange:(
+    base: #ff9500,
+    contrast: #f3ffff
+  ),
+      ios-pink:(
+    base: #ff2d55,
+    contrast: #f3ffff
+  ),
+      ios-green:(
+    base: #4cd964,
+    contrast: #f3ffff
+  ),
+      ios-red:(
+    base: #ff3b30,
+    contrast: #f3ffff
+  )
+);
+$text-input-md-show-focus-highlight: true;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+//@import "roboto";
+//@import "noto-sans";
+@import url('https://fonts.googleapis.com/css?family=Cabin|Lato|Open+Sans|Ubuntu|Nunito');
+$font-family-base: 'Ubuntu', sans-serif;
+$font-family-ios-base: $font-family-base;
+$font-family-md-base: $font-family-base;
+$font-family-wp-base: $font-family-base;

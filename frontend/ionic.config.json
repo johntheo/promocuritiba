@@ -1,0 +1,8 @@
+{
+  "name": "relig",
+  "app_id": "15d47128",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
