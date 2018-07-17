@@ -27,6 +27,7 @@ import { RadioPlayer } from '../providers/radio-service';
 //*********** Image Gallery **************/
 import { GalleryModal } from 'ionic-gallery-modal';
 import { ZoomableImage } from 'ionic-gallery-modal';
+import { RestApiProvider } from '../providers/rest-api/rest-api';
 
 //************ Pages *****************/
 
@@ -71,6 +72,7 @@ export const config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthData,
     RadioPlayer,
+    RestApiProvider,
   ]
 })
 export class AppModule {}
