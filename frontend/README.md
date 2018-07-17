@@ -1,2 +1,2 @@
-# RELIG
-Repositório para o aplicativo de Eventos Religiosos
+# PEEN
+Front end do aplicativo para eventos infantis
