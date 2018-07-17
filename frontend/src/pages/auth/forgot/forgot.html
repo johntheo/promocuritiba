@@ -12,16 +12,16 @@
     <form [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
 
       <ion-item>
-        <ion-label stacked>Email</ion-label>
-        <ion-input tappable formControlName="email" type="email" placeholder="Your email address" [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"></ion-input>
+        <ion-label floating>Email</ion-label>
+        <ion-input tappable formControlName="email" type="email" [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"></ion-input>
       </ion-item>
 
       <ion-item class="error-message">
-        <p  *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">Please enter a valid email.</p>
+        <p  *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">Insira um email válido</p>
       </ion-item>
 
-      <button ion-button block type="submit" color="blue2">
-        Reset your Password
+      <button ion-button block type="submit" class="btn-recover" color="primary">
+        Recuperar senha
       </button>
 
     </form>
