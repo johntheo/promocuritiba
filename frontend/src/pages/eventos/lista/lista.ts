@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { RestApiProvider } from '../../../providers/rest-api/rest-api';
 // import 'rxjs/add/operator/map'; // you might need to import this, or not depends on your setup
 // import { GalleryModal } from 'ionic-gallery-modal';
 // declare var google;
@@ -21,7 +22,7 @@ export class ListaPage {
   mapList: FirebaseListObservable<any[]>;
   mapListArray: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public afDB: AngularFireDatabase, public restApi:RestApiProvider) {
 
     let loadingPopup = this.loadingCtrl.create({
       spinner: 'crescent',
@@ -31,7 +32,7 @@ export class ListaPage {
     loadingPopup.present();
     this.categoriaId = this.navParams.get('categoriaId');
     this.categoriaNome = this.navParams.get('categoriaNome');
-    this.afDB.list('/eventos', {
+    /*this.afDB.list('/eventos', {
       query: {
         orderByChild: "categoriaId",
         equalTo: parseInt(this.categoriaId)
@@ -39,7 +40,11 @@ export class ListaPage {
     }).subscribe(listItems => {
       this.items = listItems;
       loadingPopup.dismiss()
-    });
+    });*/
+    this.restApi.getEventos(this.categoriaId).subscribe(listItems => {
+      this.items = listItems;
+      loadingPopup.dismiss();
+    })
   }
 
   goToDetail(itemId) {
