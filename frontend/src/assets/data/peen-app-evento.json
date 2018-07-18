@@ -1,0 +1,37 @@
+{
+  "datas" : [ {
+    "fim" : "2018/01/25 14:00",
+    "inicio" : "2018/01/25 13:00"
+  }, {
+    "fim" : "2018/01/25 16:00",
+    "inicio" : "2018/01/25 15:00"
+  }, {
+    "fim" : "2018/01/25 18:00",
+    "inicio" : "2018/01/25 17:00"
+  } ],
+  "categoriaId": 0,
+  "descricao" : "Traquinagens é um espetáculo realizado através de uma técnica pouco utilizada no Brasil, a pantomima de animação, indicado crianças de todas as idades. O seu desenvolvimento enfoca o cotidiano de um pequeno “clown”, e de um ratinho explorando situações naturais do universo de uma criança, sua curiosidade, seus medos, suas conquistas, o lúdico, suas fantasias, entre outros. Não perca esse espetáculo que irá te levar para o mundo da magia.",
+  "endereco" : "Av. Sete de Setembro, 2775 – Rebouças, Curitiba – PR, 80230-010",
+  "imagens":[{
+    "nome": "Foto 1",
+    "url": "https://firebasestorage.googleapis.com/v0/b/peen-app.appspot.com/o/eventos%2Ftraquinagens1.jpg?alt=media&token=ed88ee86-dddb-4f7a-a66a-a637f68c8fed"
+  },{
+    "nome": "Foto 2",
+    "url": "https://firebasestorage.googleapis.com/v0/b/peen-app.appspot.com/o/eventos%2Ftraquinagens2.jpg?alt=media&token=de772896-33fb-4203-84ef-3fc4af2f176e"
+  },{
+    "nome": "Foto 3",
+    "url": "https://firebasestorage.googleapis.com/v0/b/peen-app.appspot.com/o/eventos%2Ftraquinagens3.jpg?alt=media&token=53167553-af90-424b-a793-34d5aa9328d9"
+  }],
+  "imgBig":"https://firebasestorage.googleapis.com/v0/b/peen-app.appspot.com/o/eventos%2Ftraquinagens-big.jpg?alt=media&token=07661a7a-2ca0-4f51-ba6f-632f8ec8eb42",
+  "imgSmall":"https://firebasestorage.googleapis.com/v0/b/peen-app.appspot.com/o/eventos%2Ftraquinagens-small.jpg?alt=media&token=5d771761-47e5-475f-bcb8-fea2c41939f7",
+  "ingresso" : {
+    "inteira" : "15,00",
+    "meia" : "7,5"
+  },
+  "lat" : -25.438104,
+  "link" : "http://www.teatrodebonecosdrbotica.com.br/pr/programacao",
+  "lng" : -49.2693787,
+  "local" : "Teatro de Bonecos Dr. Botica",
+  "nome" : "Traquinagens",
+  "organizador" : "Cia7Art Teatro de Bonecos"
+}

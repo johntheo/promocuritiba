@@ -23,4 +23,8 @@ export class RestApiProvider {
   public getEventos(categoriaId:number):Observable<any[]>{
     return this.http.get('../../assets/data/peen-app-eventos.json').map(res=>res.json());
   }
+
+  public getEvento(key:number):Observable<any>{
+    return this.http.get('../../assets/data/peen-app-evento.json').map(res=>res.json());
+  }
 }

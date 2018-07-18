@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map'; // you might need to import this, or not depends
 
 //*********** Import image gallery **************//
 import { GalleryModal } from 'ionic-gallery-modal';
+import { RestApiProvider } from '../../../providers/rest-api/rest-api';
+import { Observable } from '../../../../node_modules/rxjs/Observable';
 
 
 @IonicPage()
@@ -25,14 +27,14 @@ export class DetalhePage {
   //****************************//
 
   itemId: any;
-  item: FirebaseObjectObservable<any[]>;
+  item: Observable<any>;
   itemImages: FirebaseListObservable<any[]>;
   imgGallery : any=[]; 
 
   
   photos: any[] = [];
 
-  constructor( public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController, public afDB: AngularFireDatabase , private toastCtrl: ToastController ,public ref: ChangeDetectorRef, public loadingCtrl: LoadingController) {
+  constructor( public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController, public afDB: AngularFireDatabase , private toastCtrl: ToastController ,public ref: ChangeDetectorRef, public loadingCtrl: LoadingController, public restApi: RestApiProvider) {
       let loadingPopup = this.loadingCtrl.create({
         spinner: 'crescent',
         content: ''
@@ -40,13 +42,19 @@ export class DetalhePage {
       loadingPopup.present();
 
       this.itemId = this.navParams.get('itemId');
-      this.item = afDB.object('/eventos/'+this.itemId );
+      //this.item = afDB.object('/eventos/'+this.itemId );
       
-      this.itemImages = afDB.list('/eventos/'+this.itemId+'/imagens' );
+      this.item = this.restApi.getEvento(this.itemId);
+      this.item.subscribe(item => {
+        this.imgGallery = item.imagens;
+        loadingPopup.dismiss();
+      })
+      
+      /*this.itemImages = afDB.list('/eventos/'+this.itemId+'/imagens' );
       this.itemImages.subscribe(imgGallery => {
             this.imgGallery = imgGallery;
             loadingPopup.dismiss();
-      })
+      })*/
 
   }
 
