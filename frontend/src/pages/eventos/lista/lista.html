@@ -1,31 +1,29 @@
-
-<ion-header>
-    <ion-navbar color="primary">
-        <button ion-button menuToggle >
+<ion-header no-shadow no-border>
+    <ion-navbar no-border-bottom color="primary">
+        <button color="c1" ion-button menuToggle >
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>
+        <ion-title color="light">
             {{categoriaNome}}
         </ion-title>
-        <ion-buttons end>
-            <button ion-button icon-only (click)="showMap()">
+        <ion-buttons end >
+            <button class="btn-map" color="c3" ion-button icon-only (click)="showMap()">
                 <ion-icon name="map"></ion-icon>
             </button>
         </ion-buttons>
     </ion-navbar>
+  </ion-header>
 
-</ion-header>
-
-<ion-content >
+<ion-content class="no-scroll">
   <!--*********** List  ***********-->
-    <ion-list>
-        <ion-item tappable  *ngFor="let item of items" (click)="goToDetail(item.$key)">
-            <ion-thumbnail item-left>
-                <img [src]="item.imgSmall">
-            </ion-thumbnail>
-            <h2>{{item.nome}}</h2>
-            <p>{{item.descricao}}</p>
-        </ion-item>
-    </ion-list>
+  <ion-card  *ngFor="let item of items" (click)="goToDetail(item.$key)">
+    <ion-item>
+        <ion-avatar item-start>
+          <img [src]="item.imgSmall">
+        </ion-avatar>
+        <h2>{{item.nome}}</h2>
+        <p>{{item.descricao}}</p>
+      </ion-item>
+  </ion-card>
 
 </ion-content>

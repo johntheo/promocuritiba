@@ -1,7 +1,15 @@
 page-detalhe {
-  .content{
-    background-color: #eee;
+  ion-content {
+    background-color: color($colors, primary) !important;
   }
+
+  ion-card {
+    background-color: color($colors, light) !important;
+  }
+  ion-item {
+    background-color: color($colors, light) !important;
+  }
+  
   .scroll-content{
     margin-top: 0 !important;
     padding-top: 44px;
@@ -19,14 +27,14 @@ page-detalhe {
   }
 
   .toolbar-title {
-      color:#FFFFFF;
+      color: color($colors, light) !important;
   }
 
   ion-navbar{
     transition: all .5s;
     .back-button,.bar-button{
       //text-shadow: 0 0 5px #000000;
-      color: #fff;
+      color: color($colors, light) !important;
     }
   }
   .header-md::after{
@@ -63,16 +71,16 @@ page-detalhe {
   }
 
   .detail-header .detail-name {
-      font-size: 20px;
+      font-size: 30px;
       font-weight: bold;
-      color: #FFFFFF;
+      color: color($colors, c3) !important;
       position: absolute;
       left: 20px;
-      bottom: 60px;
+      bottom: 30px;
       text-shadow: 0 3px 6px rgba(0,0,0,0.36), 0 3px 6px rgba(0,0,0,0.52);
   }
   .detail-header .detail-price {
-      color: #FFFFFF;
+      color: color($colors, light) !important;
       font-size: 16px;
       font-weight: bold;
       /*color: #86d44d;*/
@@ -100,5 +108,5 @@ page-detalhe {
     transition: background-size .1s ease-in;
   }
 
-
+  //.no-scroll .scroll-content{ overflow: hidden; }
 }

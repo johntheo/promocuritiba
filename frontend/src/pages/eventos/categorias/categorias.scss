@@ -1,9 +1,24 @@
 page-categorias {
+    ion-navbar {
+        border-radius: 5px;
+        background-color: transparent !important;
+    }
 
+    ion-content {
+        background-color: color($colors, primary) !important;
+    }
+
+    .toolbar-title{
+        color: color($colors, light) !important;
+    }
+
+    //.no-scroll .scroll-content{ overflow: hidden; }
+    
     ion-card  {
         position: relative;
         text-align: center;
         width: 100% !important;
+        border-radius: 8px !important;
     }
     // ************ list view ************//  
         ion-card.card-list {

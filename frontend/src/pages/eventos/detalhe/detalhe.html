@@ -6,7 +6,7 @@
 </ion-header>
 
 
-<ion-content no-padding class="content" (ionScroll)="onScroll($event)" [class.transition]="transition">
+<ion-content no-padding (ionScroll)="onScroll($event)" [class.transition]="transition" class="no-scroll">
 
   <!--*********** HEADER  ***********-->
   <div class="detail-header" [ngStyle]="{'background-image': 'url(' + (item | async)?.imgBig + ')'}">
@@ -46,10 +46,10 @@
     <ion-card-content>
       <div class="detail-price ">
         <p *ngFor='let data of (item | async)?.datas'>
-          <ion-icon name="ios-calendar-outline" item-left color="light"> </ion-icon>
+          <ion-icon name="ios-calendar-outline" item-left color="dark"> </ion-icon>
           {{data.inicio | date:'EEEE, dd/MMM' }}
           <br/>
-          <ion-icon name="ios-time-outline" item-left color="light"> </ion-icon>
+          <ion-icon name="ios-time-outline" item-left color="dark"> </ion-icon>
           {{data.inicio | date:'HH:mm' }}
         </p>
       </div>
