@@ -1,0 +1,13 @@
+[ {
+  "descricao" : "Peças teatrais",
+  "img" : "img1.png",
+  "nome" : "Teatro"
+}, {
+  "descricao" : "Eventos musicais",
+  "img" : "img2.png",
+  "nome" : "Música"
+}, {
+  "descricao" : "Atividades com desenho e pintura",
+  "img" : "img3.png",
+  "nome" : "Pintura"
+} ]

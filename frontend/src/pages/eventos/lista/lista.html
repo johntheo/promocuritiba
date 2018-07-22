@@ -1,0 +1,31 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle >
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            {{categoriaNome}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="showMap()">
+                <ion-icon name="map"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+  <!--*********** List  ***********-->
+    <ion-list>
+        <ion-item tappable  *ngFor="let item of items" (click)="goToDetail(item.$key)">
+            <ion-thumbnail item-left>
+                <img [src]="item.imgSmall">
+            </ion-thumbnail>
+            <h2>{{item.nome}}</h2>
+            <p>{{item.descricao}}</p>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

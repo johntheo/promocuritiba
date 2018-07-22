@@ -1,0 +1,78 @@
+page-login {
+
+  ion-content {
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-color: transparent;
+    background-color:color($colors,color5,base) !important;
+  }
+  .scroll-content {
+    margin-top: 0 !important;
+    overflow:hidden;
+  }
+
+  .logo {
+    height: 12em;
+    padding-top: 25px;
+    display: inline-block;
+  }
+  
+  .submit-box{
+    margin-top: -20px;
+    text-align: center;
+    max-width: 20.5em;   
+  }
+
+  .bottom-btn{
+    max-width: 21.5em;
+  }
+
+  .error-message .item-inner{
+    border-bottom-color:  transparent !important;
+    box-shadow: inset 0 -1px 0 0  transparent !important;
+  }
+	.error-message p{
+		text-align: right;
+		color: color($colors,danger);
+	}
+  ion-item {
+    color:color($colors,color5,base) !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    background-color: transparent !important;
+    
+  }       
+   
+  //linha
+	.item-inner{
+		border-bottom: 1px solid color($colors,color5,base) !important;
+    box-shadow: inset 0 -1px 0 transparent;
+    padding-bottom: 2px; 
+	}
+  ::-webkit-input-placeholder {
+    color: color($colors,color5,base) !important;
+  }
+
+  .login-container {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%); 
+    //position: absolute;
+    //top: 20%;
+    padding: 2em;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    z-index: 2;
+    max-width: 26em;
+    background-color: color($colors,color5,contrast) !important;
+    //border-radius : 5px; 
+  }
+  
+  button {
+    border-radius: 100px !important;
+  }
+}

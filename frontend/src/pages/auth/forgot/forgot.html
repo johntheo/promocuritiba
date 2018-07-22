@@ -1,0 +1,30 @@
+<ion-header no-border>
+  <ion-navbar transparent color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <div class="login-container">
+    <img class="logo" src="./assets/icons/PEEN-transp.png" />
+    <form [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input tappable formControlName="email" type="email" [class.invalid]="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item class="error-message">
+        <p  *ngIf="!resetPasswordForm.controls.email.valid  && resetPasswordForm.controls.email.dirty">Insira um email válido</p>
+      </ion-item>
+
+      <button ion-button block type="submit" class="btn-recover" color="primary">
+        Recuperar senha
+      </button>
+
+    </form>
+
+  </div>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "peen",
+  "app_id": "328fc27c",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

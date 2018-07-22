@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar transparent [class.show-background]="showToolbar">
+    <ion-title color="light" [hidden]="!showToolbar">{{(item | async)?.nome}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding class="content" (ionScroll)="onScroll($event)" [class.transition]="transition">
+
+  <!--*********** HEADER  ***********-->
+  <div class="detail-header" [ngStyle]="{'background-image': 'url(' + (item | async)?.imgBig + ')'}">
+    <h2 class="detail-name "> {{(item | async)?.nome}}</h2>
+    <ion-fab bottom right edge class="hello pop-in">
+      <button ion-fab *ngIf="!favorite" color="color2" (click)="addToFav()">
+        <ion-icon name="ios-notifications-outline"></ion-icon>
+      </button>
+      <button ion-fab *ngIf="favorite" color="color2" (click)="addToFav()">
+        <ion-icon name="ios-notifications-off-outline"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
+
+  <!--***********  DESCRICAO ***********-->
+  <ion-card>
+    <ion-card-header no-margin>
+      Detalhes
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col no-padding>
+          <p>{{(item | async)?.descricao}}</p>
+        </ion-col>
+      </ion-row>
+
+      <!--<div [innerHTML]="(item | async)?.descricao"></div>-->
+
+    </ion-card-content>
+  </ion-card>
+
+  <!--***********  DATAS ***********-->
+  <ion-card>
+    <ion-card-header no-margin>
+      Datas
+    </ion-card-header>
+    <ion-card-content>
+      <div class="detail-price ">
+        <p *ngFor='let data of (item | async)?.datas'>
+          <ion-icon name="ios-calendar-outline" item-left color="light"> </ion-icon>
+          {{data.inicio | date:'EEEE, dd/MMM' }}
+          <br/>
+          <ion-icon name="ios-time-outline" item-left color="light"> </ion-icon>
+          {{data.inicio | date:'HH:mm' }}
+        </p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!--*********** MAPA ***********-->
+  <ion-card>
+
+    <!--<img src="https://maps.googleapis.com/maps/api/staticmap?center={{(item | async)?.lat}},{{(item | async)?.lng}}&zoom=15&scale=2&size=300x150&maptype=roadmap&format=png&visual_refresh=true&markers=color:0xffEE58%7Clabel:%7C{{(item | async)?.lat}},{{(item | async)?.lng}}"
+    />-->
+
+    <ion-item>
+      <ion-icon name="pin" item-start large></ion-icon>
+      <h2>{{(item | async)?.local}}</h2>
+      <p text-wrap>{{(item | async)?.endereco}}</p>
+    </ion-item>
+
+    <ion-item>
+      <!--<span item-start>18 min</span>
+      <span item-start>(2.6 mi)</span>-->
+      <input #dummy style="display: none" type="text" value="{{(item | async)?.categoriaId}}">
+      <input #lat style="display: none" type="text" value="{{(item | async)?.lat}}">
+      <input #lng style="display: none" type="text" value="{{(item | async)?.lng}}">
+
+      <button ion-button full (click)="showMap(dummy.value,lat.value,lng.value)" disabled="true">
+        Ver Rota
+      </button>
+    </ion-item>
+
+  </ion-card>
+  <!---->
+
+  <!--***********  IMAGENS ***********-->
+  <ion-card *ngIf="imgGallery?.length > 0 ">
+    <ion-card-header>
+      Fotos
+    </ion-card-header>
+    <ion-grid>
+      <ion-row wrap color="gray">
+        <ion-col tappable col-4 *ngFor="let image of imgGallery  ,let i = index">
+          <img class="expanded-image" [src]="image.url" (click)="openFullImage(i)" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <!---->
+
+  <!--***********  CONTATO ***********-->
+  <ion-card>
+    <div class="info">
+      <ion-list no-lines>
+        <ion-item>
+          <ion-icon name="ios-call-outline" item-left color="darkGray"></ion-icon>
+          {{(item | async)?.organizador}}
+        </ion-item>
+        <ion-item wrap>
+          <ion-icon name="ios-globe-outline" item-left color="darkGray"></ion-icon>
+          {{(item | async)?.link}}
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-card>
+  <!---->
+</ion-content>
