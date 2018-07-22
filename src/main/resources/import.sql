@@ -51,5 +51,5 @@ insert into imagem (id, data_inclusao, data_alteracao, nome, valor, id_evento) v
 insert into evento_categoria (id_evento, id_categoria) values ((select id from evento where nome = 'Trucostela'), (select id from categoria where valor = 'Infantil'));
 
 insert into Role values ('ROLE_ADMIN');
-insert into Usuario (email, nome, senha) values ('marcos@promocuritiba.com', 'Marcos', '$2a$04$qP517gz1KNVEJUTCkUQCY.JzEoXzHFjLAhPQjrg5iP6Z/UmWjvUhq')
-insert into Usuario_Role(Usuario_email, roles_nome) values ('marcos@promocuritiba.com', 'ROLE_ADMIN')
+insert into Usuario (email, nome, senha) values ('marcos@promocuritiba.com', 'Marcos', '$2a$04$qP517gz1KNVEJUTCkUQCY.JzEoXzHFjLAhPQjrg5iP6Z/UmWjvUhq');
+insert into Usuario_Role(Usuario_email, roles_nome) values ('marcos@promocuritiba.com', 'ROLE_ADMIN');
