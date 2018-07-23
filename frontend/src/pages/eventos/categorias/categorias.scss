@@ -1,15 +1,12 @@
 page-categorias {
     ion-navbar {
-        border-radius: 5px;
+        //border-radius: 5px;
         background-color: transparent !important;
+        z-index: 10;
     }
 
     ion-content {
-        background-color: color($colors, primary) !important;
-    }
-
-    .toolbar-title{
-        color: color($colors, light) !important;
+        background-color: white !important;
     }
 
     //.no-scroll .scroll-content{ overflow: hidden; }

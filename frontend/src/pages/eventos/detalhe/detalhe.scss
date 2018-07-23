@@ -1,13 +1,17 @@
 page-detalhe {
   ion-content {
-    background-color: color($colors, primary) !important;
+    background-color: color($colors, light-bg) !important;
   }
 
   ion-card {
-    background-color: color($colors, light) !important;
+    background-color: white !important;
   }
   ion-item {
-    background-color: color($colors, light) !important;
+    background-color: white !important;
+  }
+
+  .toolbar-title{
+    color: white;
   }
   
   .scroll-content{
@@ -26,15 +30,11 @@ page-detalhe {
       padding-bottom: $toolbar-ios-height; // Padding for the Tabbbar (only needed if tabbar is used)
   }
 
-  .toolbar-title {
-      color: color($colors, light) !important;
-  }
-
   ion-navbar{
     transition: all .5s;
     .back-button,.bar-button{
       //text-shadow: 0 0 5px #000000;
-      color: color($colors, light) !important;
+      color: color($colors, white) !important;
     }
   }
   .header-md::after{
@@ -73,7 +73,7 @@ page-detalhe {
   .detail-header .detail-name {
       font-size: 30px;
       font-weight: bold;
-      color: color($colors, c3) !important;
+      color: color($colors, white) !important;
       position: absolute;
       left: 20px;
       bottom: 30px;
@@ -102,7 +102,7 @@ page-detalhe {
   //************ Fading header  **********//
   .show-background{
     border-style: none;
-    background : color($colors, primary)
+    background : color($colors, accent-bg)
   }
   .transition{
     transition: background-size .1s ease-in;

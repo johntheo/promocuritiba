@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar transparent [class.show-background]="showToolbar">
-    <ion-title color="light" [hidden]="!showToolbar">{{(item | async)?.nome}}
+    <ion-title  [hidden]="!showToolbar">{{(item | async)?.nome}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -47,10 +47,7 @@
       <div class="detail-price ">
         <p *ngFor='let data of (item | async)?.datas'>
           <ion-icon name="ios-calendar-outline" item-left color="dark"> </ion-icon>
-          {{data.inicio | date:'EEEE, dd/MMM' }}
-          <br/>
-          <ion-icon name="ios-time-outline" item-left color="dark"> </ion-icon>
-          {{data.inicio | date:'HH:mm' }}
+          {{data.inicio | date:'EEEE, dd/MMM - HH:mm' }}
         </p>
       </div>
     </ion-card-content>
@@ -103,7 +100,7 @@
     <div class="info">
       <ion-list no-lines>
         <ion-item>
-          <ion-icon name="ios-call-outline" item-left color="darkGray"></ion-icon>
+          <ion-icon name="ios-contacts-outline" item-left color="darkGray"></ion-icon>
           {{(item | async)?.organizador}}
         </ion-item>
         <ion-item wrap>
