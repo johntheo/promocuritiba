@@ -23,7 +23,7 @@ public class Informacao {
 	@SequenceGenerator(name = Evento.SEQ_INFO, sequenceName = Evento.SEQ_INFO, allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = Evento.SEQ_INFO)
 	private long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_evento")
 	private Evento evento;
@@ -36,11 +36,20 @@ public class Informacao {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
+
+	public Informacao() {
+	}
+
+	public Informacao(String nome, String valor) {
+		super();
+		this.nome = nome;
+		this.valor = valor;
+	}
 
 	public long getId() {
 		return id;

@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.marcoscarvalho.promocuritiba.service.Constantes;
+
 @Entity
 @Table(name = "tag")
 public class Tag {
@@ -38,11 +40,26 @@ public class Tag {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
+
+	public Tag() {
+	}
+	
+	public Tag(String nome) {
+		super();
+		this.nome = nome;
+		this.valor = Constantes.ajustarString(nome);
+	}
+	
+	public Tag(String nome, String valor) {
+		super();
+		this.nome = nome;
+		this.valor = valor;
+	}
 
 	public long getId() {
 		return id;

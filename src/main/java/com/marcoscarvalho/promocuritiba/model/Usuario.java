@@ -1,6 +1,6 @@
 package com.marcoscarvalho.promocuritiba.model;
 
-import java.util.Collection;
+//import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,13 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class Usuario {// implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 
 	@Id
 	private String email;
@@ -29,6 +29,18 @@ public class Usuario {// implements UserDetails {
 	@JoinTable(name = "Usuario_Role", joinColumns = { @JoinColumn(name = "Usuario_email") }, inverseJoinColumns = {
 			@JoinColumn(name = "roles_nome") })
 	private Set<Role> roles = new HashSet<Role>();
+	
+	public Usuario() {
+
+	}
+
+	public Usuario(String email, String nome, String senha, Set<Role> roles) {
+		super();
+		this.email = email;
+		this.nome = nome;
+		this.senha = senha;
+		this.roles = roles;
+	}
 
 	public String getEmail() {
 		return email;
@@ -64,7 +76,7 @@ public class Usuario {// implements UserDetails {
 
 	@Override
 	public String toString() {
-		return "Usuario [email=" + email + ", nome=" + nome + ", senha=" + senha + ", roles=" + roles + "]";
+		return "Usuario [email=" + email + ", nome=" + nome + "]";
 	}
 
 //	@Override

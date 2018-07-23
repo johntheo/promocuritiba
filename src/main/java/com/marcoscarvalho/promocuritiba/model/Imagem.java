@@ -36,11 +36,19 @@ public class Imagem {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
+	
+	public Imagem() {
+	}
+	
+	public Imagem(String nome, String valor) {
+		this.nome = nome;
+		this.valor = valor;
+	}
 
 	public long getId() {
 		return id;

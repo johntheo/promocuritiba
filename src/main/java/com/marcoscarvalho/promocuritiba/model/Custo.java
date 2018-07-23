@@ -37,11 +37,20 @@ public class Custo {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
+
+	public Custo() {
+	}
+	
+	public Custo(String nome, BigDecimal valor) {
+		super();
+		this.valor = valor;
+		this.nome = nome;
+	}
 
 	public long getId() {
 		return id;

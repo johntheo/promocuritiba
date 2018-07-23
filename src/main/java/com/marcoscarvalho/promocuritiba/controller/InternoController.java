@@ -10,7 +10,7 @@ public class InternoController {
 	
 	@Autowired
 	private Logger logger;
-
+	
 	@GetMapping("/interno/blank.html")
 	public String blank() {
 		return "/interno/blank";
@@ -39,7 +39,7 @@ public class InternoController {
 	@GetMapping("/interno/original.html")
 	public String original() {
 		logger.info("Acessando a página interno original.html");
-		return "original";
+		return "/interno/original";
 	}
-
+	
 }
