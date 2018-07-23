@@ -72,7 +72,7 @@
       <input #lat style="display: none" type="text" value="{{(item | async)?.lat}}">
       <input #lng style="display: none" type="text" value="{{(item | async)?.lng}}">
 
-      <button ion-button full (click)="showMap(dummy.value,lat.value,lng.value)" disabled="true">
+      <button ion-button full (click)="showMap(dummy.value,lat.value,lng.value)" >
         Ver Rota
       </button>
     </ion-item>

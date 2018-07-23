@@ -2,6 +2,7 @@ import { Component,ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController,ViewController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable , FirebaseObjectObservable} from 'angularfire2/database';
 import 'rxjs/add/operator/map'; // you might need to import this, or not depends on your setup
+import { RestApiProvider } from '../../../providers/rest-api/rest-api';
 declare var google;
 
 @IonicPage()
@@ -23,7 +24,7 @@ export class ListaMapaPage {
 
   infoWindows: any=[];
 
-  constructor(public navCtrl: NavController,public navParams: NavParams,public loadingCtrl: LoadingController ,public viewCtrl: ViewController,public afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController,public navParams: NavParams,public loadingCtrl: LoadingController ,public viewCtrl: ViewController,public afDB: AngularFireDatabase, public restApi:RestApiProvider) {
 
       let loadingPopup = this.loadingCtrl.create({
         spinner: 'crescent',
@@ -32,14 +33,20 @@ export class ListaMapaPage {
       loadingPopup.present();
 
       this.categoryId = this.navParams.get('categoryId');
-      this.afDB.list('/eventos', {query: {
+      this.restApi.getEventos(this.categoryId).subscribe(listItems => {
+        this.items = listItems;
+        this.displayGoogleMap();
+        loadingPopup.dismiss()
+    });
+      /*this.afDB.list('/eventos', {query: {
           orderByChild: "categoriaId",
           equalTo: parseInt(this.categoryId) 
       }}).subscribe(listItems => {
           this.items = listItems;
           this.displayGoogleMap();
           loadingPopup.dismiss()
-      });
+      });*/
+      
   }
 
   ionViewDidLoad() {
@@ -69,13 +76,13 @@ export class ListaMapaPage {
             animation: google.maps.Animation.DROP,
             markerSelected : true,
             title: items.nome,
-            web: items.web,
-            phone: items.telefone,
+            web: items.link,
+            organizador: items.organizador,
 
             //**** Custom Marker Symbols ****/
             //icon:  'assets/red_pin72x96.png'
             icon: {
-                    url: 'assets/red_pin72x96.png',
+                    url: 'assets/imgs/red_pin72x96.png',
                     //The size image file.
                     size: new google.maps.Size(72, 96),
                     // we want to render @ 30x30 logical px (@2x dppx or 'Retina')
@@ -102,7 +109,7 @@ export class ListaMapaPage {
       var infoWindowContent = '<div id="iw-container">' +               
                                   '<div class="iw-content">' +
                                         '<div class="iw-subTitle"><h3>'+marker.title+'</h3></div>' +                                  
-                                        '<br><b>Telefone:</b> '+marker.phone+'<br><b>Website:</b> '+marker.web+'</p>'+
+                                        '<br><b>Orfanizador:</b> '+marker.organizador+'<br><b>Website:</b> '+marker.web+'</p>'+
                                   '</div>' +
                                   //'<div id="do-something-button">button</div>' +
                               '</div>';    
