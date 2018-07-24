@@ -1,0 +1,160 @@
+<#import "template-interno.html" as u>
+<@u.page>
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Cadastrar Evento</li>
+      </ol>
+      
+      <script type="text/javascript">
+      function duplicate(name) {
+    	  var myDiv = document.getElementById(name);
+    	  var divClone = myDiv.cloneNode(true); // the true is for deep cloning
+    	  document.body.appendChild(divClone);
+      }
+      
+      function duplicate2(name, divName) {
+    	  var myDiv = document.getElementById(name);
+    	  var divClone = myDiv.cloneNode(true); // the true is for deep cloning
+    	  
+    	  var divFera = document.getElementById(divName);
+    	  divFera.appendChild(divClone);
+      }
+      
+      function duplicate3(name) {
+    	  var myDiv = document.getElementById(name);
+    	  var divClone = myDiv.cloneNode(true); // the true is for deep cloning
+    	  
+    	  var divFera = document.getElementById(name);
+    	  divFera.appendChild(divClone);
+      }
+      </script>
+      
+        <form method="post" action="/interno/cadastrar-evento.html" name="evento">
+		  <div class="form-group row">
+		    <label for="nome" class="col-4 col-form-label">Nome</label> 
+		    <div class="col-8">
+		      <input id="nome" name="nome" placeholder="nome do evento" type="text" class="form-control here" required="required">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="link" class="col-4 col-form-label">Link</label> 
+		    <div class="col-8">
+		      <input id="link" name="link" placeholder="link permanente" type="text" class="form-control here">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-4 col-form-label" for="corpoPrincipal">Corpo do Evento</label> 
+		    <div class="col-8">
+		      <textarea id="corpoPrincipal" name="corpoPrincipal" cols="40" rows="5" class="form-control" required="required"></textarea>
+		    </div>
+		  </div>
+		  <div id="datasDiv">
+		  	<div id="datas">
+			  <div class="form-group row">
+			    <label for="dataInicio" class="col-4 col-form-label">Data de Início</label> 
+			    <div class="col-8">
+			      <input id="dataInicio" name="variasDatasInicio" placeholder="dd/MM/YYYY HH:mm" type="text" class="form-control here" aria-describedby="dataInicioHelpBlock"> 
+			      <span id="dataInicioHelpBlock" class="form-text text-muted">dd/MM/YYYY HH:mm</span>
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="dataFim" class="col-4 col-form-label">Data Fim</label> 
+			    <div class="col-8">
+			      <input id="dataFim" name="variasDatasTermino" placeholder="dd/MM/YYYY HH:mm" type="text" aria-describedby="dataFimHelpBlock" class="form-control here"> 
+			      <span id="dataFimHelpBlock" class="form-text text-muted">dd/MM/YYYY HH:mm</span>
+			    </div>
+			  </div>
+		  	</div>
+		    <a class="btn btn-primary"  onclick="duplicate3('datas')">Duplicar Datas</a>
+		  </div>
+		  <div id="custosDiv">
+		  	<div id="custos">
+			  <div class="form-group row">
+			    <label for="variosCustoNome" class="col-4 col-form-label">Custo</label> 
+			    <div class="col-8">
+			      <input id="variosCustoNome" name="variosCustoNome" placeholder="custo nome" type="text" class="form-control here">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="valor" class="col-4 col-form-label">Custo</label> 
+			    <div class="col-8">
+			      <input id="valor" name="variosCustoValor" placeholder="custo valor" type="text" class="form-control here">
+			    </div>
+			  </div>
+		  	</div>
+  		    <a class="btn btn-primary"  onclick="duplicate3('custos')">Duplicar Custos</a>
+		  </div>
+		  <div id="informacoesDiv">
+		  	<div id="informacoes">
+			  <div class="form-group row">
+			    <label for="variosInformacaoNome" class="col-4 col-form-label">Informação</label> 
+			    <div class="col-8">
+			      <input id="variosInformacaoNome" name="variosInformacaoNome" placeholder="Informação Nome" type="text" class="form-control here">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="valor" class="col-4 col-form-label">Informação</label> 
+			    <div class="col-8">
+			      <input id="valor" name="variosInformacaoValor" placeholder="Informação Valor" type="text" class="form-control here">
+			    </div>
+			  </div>
+		  	</div>
+			<a class="btn btn-primary"  onclick="duplicate3('informacoes')">Duplicar Informações</a>
+		  </div>
+		  <div id="imagensDiv">
+		  	<div id="imagens">
+			  <div class="form-group row">
+			    <label for="variasImagensNome" class="col-4 col-form-label">Imagem</label> 
+			    <div class="col-8">
+			      <input id="variasImagensNome" name="variasImagensNome" placeholder="Imagem Nome" type="text" class="form-control here">
+			    </div>
+			  </div>
+			  <div class="form-group row">
+			    <label for="valor" class="col-4 col-form-label">Imagem</label> 
+			    <div class="col-8">
+			      <input id="valor" name="variasImagensValor" placeholder="imagem valor" type="text" class="form-control here">
+			    </div>
+			  </div>
+		  	</div>
+			<a class="btn btn-primary"  onclick="duplicate3('imagens')">Duplicar Imagens</a>
+		  </div>
+		  <div class="form-group row">
+		    <label for="variasTags" class="col-4 col-form-label">Tag</label> 
+		    <div class="col-8">
+		      <input id="variasTags" name="variasTags" placeholder="variasTags" type="text" class="form-control here">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="variasCategorias" class="col-4 col-form-label">Categoria</label> 
+		    <div class="col-8">
+		      <input id="variasCategorias" name="variasCategorias" placeholder="categoria " type="text" class="form-control here">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="local" class="col-4 col-form-label">Local</label> 
+		    <div class="col-8">
+		      <input id="local" name="local" placeholder="Local" type="text" class="form-control here">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="endereco" class="col-4 col-form-label">Endereço</label> 
+		    <div class="col-8">
+		      <input id="endereco" name="endereco" placeholder="Endereço" type="text" class="form-control here">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="origemInformacao" class="col-4 col-form-label">Origem Informação</label> 
+		    <div class="col-8">
+		      <input id="origemInformacao" name="origemInformacao" placeholder="Origem informação: http://www.teatrodebonecosdrbotica.com.br/pr/programacao/207" type="text" class="form-control here">
+		    </div>
+		  </div> 
+		  <div class="form-group row">
+		    <div class="offset-4 col-8">
+		      <button name="submit" type="submit" class="btn btn-primary">Salvar</button>
+		    </div>
+		  </div>
+		</form>
+</@u.page>

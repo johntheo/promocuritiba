@@ -36,5 +36,11 @@ public class IndexController {
 		model.addAttribute("objetoEventos", eventoService.consultarProximosObjetosEventos());
 		return "index";
 	}
+	
+	@GetMapping("/original.html")
+	public String original() {
+		logger.info("Acessando a página original.html");
+		return "original";
+	}
 
 }

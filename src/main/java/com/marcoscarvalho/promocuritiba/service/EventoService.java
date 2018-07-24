@@ -66,4 +66,8 @@ public class EventoService {
 				"consultarProximosEventos >> entre datas >> " + dataInicio + " - " + dataFim + " >> " + list.size());
 		return list;
 	}
+	
+	public Evento salvarEvento(Evento evento) {
+		return eventoRepositorio.save(evento);
+	}
 }

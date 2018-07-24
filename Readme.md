@@ -1,21 +1,23 @@
 # PromoCuritiba
 
 # Termos
-Temos a intenção de divulgar eventos de qualquer espécie na cidade de Curitiba.
-Buscamos informações em dezenas de sites e postamos aqui, para ser um lugar único de suas buscas.
-O problema atual é que os sites que fazem esse tipo de serviço, normalmente cobram dos organizadores para colocar eventos em seu site. Aqui não temos custos para os organizadores e você sentirá um meio mais justo de buscar sua programação para o final de semana.
-Caso você queira divulgar algo, mande nos um e-mail através da página Contato.
-Caso não concorde nas publicações, entre em contato.
-Atenciosamente,
-Marcos de Carvalho Oliveira
+Temos a intenção de divulgar eventos de qualquer espécie na cidade de Curitiba. Buscamos informações em dezenas de sites e postamos aqui, para ser um lugar único de suas buscas.
+
+O problema atual é que os sites que fazem esse tipo de serviço, normalmente cobram dos organizadores para colocar eventos em seu site. Aqui não tem custos e você sentirá um meio mais justo de buscar sua programação.
+
+Dúvidas, sugestões, entre em contato.
 
 # Site
 ## Template
 Layout retirado de https://startbootstrap.com/template-overviews/freelancer/
 
+## Inicialização
+Pode ser feito de 2 formas
+ - Executar o main da classe PromocuritibaApplication
+ - Executar através do comando ./mvnw spring-boot:run
+  
 ## Exemplo de post
 Traquinagens – Cia7Art Teatro de Bonecos
-Deixe uma resposta
 
 Traquinagens é um espetáculo realizado através de uma técnica pouco utilizada no Brasil, a pantomima de animação, indicado crianças de todas as idades. O seu desenvolvimento enfoca o cotidiano de um pequeno “clown”, e de um ratinho explorando situações naturais do universo de uma criança, sua curiosidade, seus medos, suas conquistas, o lúdico, suas fantasias, entre outros. Não perca esse espetáculo que irá te levar para o mundo da magia.
 

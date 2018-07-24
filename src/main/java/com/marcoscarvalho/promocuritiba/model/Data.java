@@ -40,11 +40,19 @@ public class Data {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
+
+	public Data() {
+	}
+	
+	public Data(Date dataInicio, Date dataFim) {
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+	}
 
 	public long getId() {
 		return id;

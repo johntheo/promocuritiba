@@ -1,9 +1,7 @@
 package com.marcoscarvalho.promocuritiba.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,6 +19,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.marcoscarvalho.promocuritiba.service.Constantes;
 
@@ -53,11 +52,11 @@ public class Evento {
 
 	@Column(nullable = false, insertable = true, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataInclusao;
+	private Date dataInclusao = new Date();
 
 	@Column(nullable = false, insertable = true, updatable = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataAlteracao;
+	private Date dataAlteracao = new Date();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_evento")
@@ -93,7 +92,18 @@ public class Evento {
 
 	@Column
 	private String origemInformacao;
-
+	
+	@Transient private String variasDatasInicio;
+	@Transient private String variasDatasTermino;
+	@Transient private String variosCustoNome;
+	@Transient private String variosCustoValor;
+	@Transient private String variosInformacaoNome;
+	@Transient private String variosInformacaoValor;
+	@Transient private String variasImagensNome;
+	@Transient private String variasImagensValor;
+	@Transient private String variasTags;
+	@Transient private String variasCategorias;
+	
 	public long getId() {
 		return id;
 	}
@@ -205,6 +215,14 @@ public class Evento {
 	public void setCategorias(Set<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	
+	public Set<Custo> getCustos() {
+		return custos;
+	}
+
+	public void setCustos(Set<Custo> custos) {
+		this.custos = custos;
+	}
 
 	@Override
 	public String toString() {
@@ -214,46 +232,93 @@ public class Evento {
 				+ ", categorias=" + categorias + ", local=" + local + ", endereco=" + endereco + ", origemInformacao="
 				+ origemInformacao + "]";
 	}
-
-	public String getTagStr() {
-		return retorarString(tags, Constantes.VIRGULA);
-	}
-
+	
 	public String getCategoriaStr() {
-		return retorarString(categorias, Constantes.VIRGULA);
+		return Constantes.retorarString(getCategorias(), Constantes.VIRGULA);
+	}
+	
+	public String getTagStr() {
+		return Constantes.retorarString(getTags(), Constantes.VIRGULA);
 	}
 
-	public String getCustoStr() {
-		return retorarString(custos, Constantes.NOVA_LINHA);
+	public String getVariasDatasInicio() {
+		return variasDatasInicio;
 	}
 
-	public String getDataStr() {
-		return retorarString(datas, Constantes.NOVA_LINHA);
+	public void setVariasDatasInicio(String variasDatasInicio) {
+		this.variasDatasInicio = variasDatasInicio;
 	}
 
-	public String getInformacaoStr() {
-		return retorarString(informacoes, Constantes.NOVA_LINHA);
+	public String getVariasDatasTermino() {
+		return variasDatasTermino;
 	}
 
-	private <T> String retorarString(Set<T> set, String formato) {
-		String str = "";
-		List<T> list = new ArrayList<T>();
-		list.addAll(set);
-		for (int i = 0; i < list.size(); i++) {
-			str += list.get(i).toString();
-			if (list.size() != (i + 1)) {
-				str += formato;
-			}
-		}
-		return str;
+	public void setVariasDatasTermino(String variasDatasTermino) {
+		this.variasDatasTermino = variasDatasTermino;
 	}
 
-	public Set<Custo> getCustos() {
-		return custos;
+	public String getVariosCustoNome() {
+		return variosCustoNome;
 	}
 
-	public void setCustos(Set<Custo> custos) {
-		this.custos = custos;
+	public void setVariosCustoNome(String variosCustoNome) {
+		this.variosCustoNome = variosCustoNome;
+	}
+
+	public String getVariosCustoValor() {
+		return variosCustoValor;
+	}
+
+	public void setVariosCustoValor(String variosCustoValor) {
+		this.variosCustoValor = variosCustoValor;
+	}
+
+	public String getVariosInformacaoNome() {
+		return variosInformacaoNome;
+	}
+
+	public void setVariosInformacaoNome(String variosInformacaoNome) {
+		this.variosInformacaoNome = variosInformacaoNome;
+	}
+
+	public String getVariosInformacaoValor() {
+		return variosInformacaoValor;
+	}
+
+	public void setVariosInformacaoValor(String variosInformacaoValor) {
+		this.variosInformacaoValor = variosInformacaoValor;
+	}
+
+	public String getVariasImagensNome() {
+		return variasImagensNome;
+	}
+
+	public void setVariasImagensNome(String variasImagensNome) {
+		this.variasImagensNome = variasImagensNome;
+	}
+
+	public String getVariasImagensValor() {
+		return variasImagensValor;
+	}
+
+	public void setVariasImagensValor(String variasImagensValor) {
+		this.variasImagensValor = variasImagensValor;
+	}
+
+	public String getVariasTags() {
+		return variasTags;
+	}
+
+	public void setVariasTags(String variasTags) {
+		this.variasTags = variasTags;
+	}
+
+	public String getVariasCategorias() {
+		return variasCategorias;
+	}
+
+	public void setVariasCategorias(String variasCategorias) {
+		this.variasCategorias = variasCategorias;
 	}
 
 }

@@ -26,3 +26,5 @@
 
 /logs/
 /img/
+
+/src/main/resources/env/
